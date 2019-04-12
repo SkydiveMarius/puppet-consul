@@ -218,6 +218,10 @@ describe 'consul class' do
       its(:stdout) { should match %r{Consul v1.4.4} }
     end
 
+    describe command('cat /var/log/consul') do
+      its(:stdout) { should match %r{log_debug} }
+    end
+
     describe command('consul acl token list --token 222bf65c-2477-4003-8f8e-842a4b394d8d | grep Description') do
       its(:stdout) { should match %r{test_token_xyz} }
     end
